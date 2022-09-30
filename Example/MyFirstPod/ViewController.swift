@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MyFirstPod
 
 class ViewController: UIViewController {
-
+    
+    weak var btnView: MUIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
