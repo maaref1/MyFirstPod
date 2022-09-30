@@ -37,20 +37,7 @@ open class MUIButton: UIButton {
     @IBInspectable
     var textAlign : Int = 0 {
         didSet{
-            switch self.textAlign {
-            case 0:
-                self.contentHorizontalAlignment = .center
-                self.contentVerticalAlignment = .center
-            case 1:
-                self.titleEdgeInsets.right = 0
-                self.contentHorizontalAlignment = .left
-            case 2:
-                self.contentHorizontalAlignment = .right
-                self.titleEdgeInsets.left = 0
-                self.titleEdgeInsets.right = self.frame.size.width * imgPaddingRight + (UIScreen.main.bounds.width * 5 / 100)
-            default:
-                print("unhandled textPosition")
-            }
+            self.drawTextAlignement()
             //self.setWidthForView()
         }
     }
@@ -58,12 +45,12 @@ open class MUIButton: UIButton {
     func setWidthForView() {
         //let cons = self.constraints
         /*for con in cons {
-            if con.identifier == "widthButton" {
-                let intW = self.intrinsicContentSize.width
-                let padW = self.frame.size.width * imgPaddingRight
-                con.constant = intW + padW
-            }
-        }*/
+         if con.identifier == "widthButton" {
+         let intW = self.intrinsicContentSize.width
+         let padW = self.frame.size.width * imgPaddingRight
+         con.constant = intW + padW
+         }
+         }*/
     }
     
     @IBInspectable
@@ -133,8 +120,7 @@ open class MUIButton: UIButton {
     
     @IBInspectable
     var shadowColor : UIColor? {
-        didSet{
-            
+        didSet {
             self.layer.shadowColor = self.shadowColor?.cgColor
             self.layer.contentsCenter = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
             self.layer.shadowRadius = self.cornorRadius
@@ -148,5 +134,52 @@ open class MUIButton: UIButton {
             self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
             
         }
+    }
+    
+    open override func draw(_ rect: CGRect) {
+        
+        self.layer.shadowColor = self.shadowColor?.cgColor
+        self.layer.contentsCenter = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        self.layer.shadowRadius = self.cornorRadius
+        self.layer.shadowOffset =  CGSize(width: -1, height: 1)
+        self.layer.shadowOpacity = 0.2
+        self.layer.masksToBounds = false
+        
+        //self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        let scale = true
+        self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        
+        self.drawBorderWithRadius()
+        self.drawTextAlignement()
+        
+        guard self.img != nil else {
+            return
+        }
+        self.addImageToRight()
+    }
+    
+    func drawTextAlignement() {
+        switch self.textAlign {
+        case 0:
+            self.contentHorizontalAlignment = .center
+            self.contentVerticalAlignment = .center
+        case 1:
+            self.titleEdgeInsets.right = 0
+            self.contentHorizontalAlignment = .left
+        case 2:
+            self.contentHorizontalAlignment = .right
+            self.titleEdgeInsets.left = 0
+            self.titleEdgeInsets.right = self.frame.size.width * imgPaddingRight + (UIScreen.main.bounds.width * 5 / 100)
+        default:
+            print("unhandled textPosition")
+        }
+    }
+    
+    
+    func drawBorderWithRadius() {
+        self.layer.cornerRadius = self.cornorRadius
+        self.layer.borderWidth = self.borderWidth
+        self.layer.borderColor = self.borderColor?.cgColor
     }
 }

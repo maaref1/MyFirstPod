@@ -68,6 +68,11 @@
             <point key="canvasLocation" x="140" y="-2"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="fuh-Et-FA9">
+            <size key="intrinsicContentSize" width="75" height="34.5"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
