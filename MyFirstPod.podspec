@@ -21,13 +21,13 @@ Pod::Spec.new do |s|
 This pod will be used to add a custom Button with a custom color, radius, actions
                        DESC
 
-  s.homepage         = 'https://github.com/maaref1/MyFirstPod'
+  s.homepage         = 'https://gitlab.com/covea-cloud-projects/mma-custom_pods'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'maaref1' => 'khalil.maaref@gmail.com' }
+  s.author           = { 'khalil.maaref.ext' => 'khalil.maaref.ext@groupe-mma.fr' }
   #khalil.maaref.ext@groupe-mma.fr
   
-  s.source           = { :git => 'https://github.com/maaref1/MyFirstPod.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://gitlab.com/covea-cloud-projects/mma-custom_pods.git', :tag => s.version.to_s }
   s.requires_arc = true
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
