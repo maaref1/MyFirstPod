@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MyFirstPod'
-  s.version          = '0.2.2'
+  s.version          = '0.2.3'
   s.summary          = 'This pod will give you access to a custom Button.'
 
 # This description is used to generate tags and improve search results.
